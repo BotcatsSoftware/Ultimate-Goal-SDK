@@ -1,7 +1,11 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autos;public class BlueAllianceAuto {
-}
+package org.firstinspires.ftc.teamcode.OpModes.Autos;
 
-public class blueAllianceAutoA extends LinearOpMode{
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
+
+public class blueAllianceAutoA extends LinearOpMode {
     DcMotor fl = null;
     DcMotor fr = null;
     DcMotor bl = null;
@@ -20,27 +24,38 @@ public class blueAllianceAutoA extends LinearOpMode{
 
         servo.setPosition(.0);
 
-        wairForStart();
-        //push the wobble goal
-        driveFowardDistance(0.5, 0);
-        //push wobble goal box A
-        driveLeftDistance(0.5, 0);
-        //come back
+        waitForStart();
+        //push wobble goal forward
+        driveForwardDistance(0.5, 33.53);
+        //push wobble goal into box
+        driveLeftDistance(0.5, (int) 0.264);
+        //drive back to line
         driveBackDistance(0.5, 0);
-
+        //drive infront of first target
+        driveRightDistance(0.5, 0);
+        //shoot
+        //drive infront of second target
+        driveRightDistance(0.5, (int) 4.422);
+        //shoot
+        //drive infront of third target
+        driveRightDistance(0.5, (int) 4.422);
+        //shoot
+        //park on line
+        driveForwardDistance(0.5,13.412);
 
 
     }
-    private void driveForwardDistance(double power, int distance){
+
+    private void driveForwardDistance(double power, double distance){
         fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        fl.setTargetPosition(distance);
-        fr.setTargetPosition(distance);
-        bl.setTargetPosition(distance);
-        br.setTargetPosition(distance);
+        fl.setTargetPosition((int) distance);
+        fr.setTargetPosition((int) distance);
+        bl.setTargetPosition((int) distance);
+        br.setTargetPosition((int) distance);
 
         fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
