@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class blueAllianceAutoA extends LinearOpMode {
+public class BlueAllianceAutoB extends LinearOpMode {
     DcMotor fl = null;
     DcMotor fr = null;
     DcMotor bl = null;
@@ -26,36 +26,36 @@ public class blueAllianceAutoA extends LinearOpMode {
 
         waitForStart();
         //push wobble goal forward
-        driveForwardDistance(0.5, 36.331);
+        driveForwardDistance(0.5, (int) 51.88);
         //push wobble goal into box
-        driveLeftDistance(0.5, 6.706);
+        driveRightDistance(0.5, (int) 18.8);
         //drive back to line
-        driveBackDistance(0.5, 0);
+        driveBackDistance(0.5, (int) 3.54);
         //drive infront of first target
-        driveRightDistance(0.5, 0);
+        driveRightDistance(0.5, (int) 4.4);
         //shoot
         //drive infront of second target
-        driveRightDistance(0.5,4.422);
+        driveRightDistance(0.5, (int) 4.4);
         //shoot
         //drive infront of third target
-        driveRightDistance(0.5,4.422);
+        driveRightDistance(0.5, (int) 4.4);
         //shoot
         //park on line
-        driveForwardDistance(0.5,13.412);
+        driveForwardDistance(0.5, (int) 63.155);
 
 
     }
 
-    private void driveForwardDistance(double power, double distance){
+    private void driveForwardDistance(double power, int distance){
         fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        fl.setTargetPosition((int) distance);
-        fr.setTargetPosition((int) distance);
-        bl.setTargetPosition((int) distance);
-        br.setTargetPosition((int) distance);
+        fl.setTargetPosition(distance);
+        fr.setTargetPosition(distance);
+        bl.setTargetPosition(distance);
+        br.setTargetPosition(distance);
 
         fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -101,16 +101,16 @@ public class blueAllianceAutoA extends LinearOpMode {
         bl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         br.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-    private void driveLeftDistance(double power, double distance){
+    private void driveLeftDistance(double power, int distance){
         fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        fl.setTargetPosition((int) -distance);
-        fr.setTargetPosition((int) distance);
-        bl.setTargetPosition((int) distance);
-        br.setTargetPosition((int) -distance);
+        fl.setTargetPosition(-distance);
+        fr.setTargetPosition(distance);
+        bl.setTargetPosition(distance);
+        br.setTargetPosition(-distance);
 
         fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -129,16 +129,16 @@ public class blueAllianceAutoA extends LinearOpMode {
         bl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         br.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-    private void driveRightDistance(double power, double distance){
+    private void driveRightDistance(double power, int distance){
         fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        fl.setTargetPosition((int) distance);
-        fr.setTargetPosition((int) -distance);
-        bl.setTargetPosition((int) -distance);
-        br.setTargetPosition((int) distance);
+        fl.setTargetPosition(distance);
+        fr.setTargetPosition(-distance);
+        bl.setTargetPosition(-distance);
+        br.setTargetPosition(distance);
 
         fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -200,3 +200,4 @@ public class blueAllianceAutoA extends LinearOpMode {
         br.setPower(-power);
     }
 }
+
