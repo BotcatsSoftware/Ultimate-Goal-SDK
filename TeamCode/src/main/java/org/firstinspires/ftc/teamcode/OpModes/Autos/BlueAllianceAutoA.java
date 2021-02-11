@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class blueAllianceAutoA extends LinearOpMode {
+public class BlueAllianceAutoA extends LinearOpMode {
     DcMotor fl = null;
     DcMotor fr = null;
     DcMotor bl = null;
@@ -119,10 +119,10 @@ public class blueAllianceAutoA extends LinearOpMode {
 
         driveLeft(power);
 
-        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
-        {
-
-        }
+//        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
+//        {
+//
+//        }
         stopDriving();
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -147,10 +147,10 @@ public class blueAllianceAutoA extends LinearOpMode {
 
         driveRight(power);
 
-        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
-        {
-
-        }
+//        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
+//        {
+//
+//        }
         stopDriving();
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
