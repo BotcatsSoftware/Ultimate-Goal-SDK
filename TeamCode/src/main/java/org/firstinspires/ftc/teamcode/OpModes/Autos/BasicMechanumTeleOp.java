@@ -1,18 +1,15 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autos;
-import android.os.DropBoxManager;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.math.Vector2d;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @TeleOp(name = "Mechanum")public class BasicMechanumTeleOp extends LinearOpMode {
@@ -21,30 +18,20 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
         boolean rightArmB = true;
         boolean BaseGrabberDebounce = false;
         double encoderRatio = 952.5/2259;
-        /*
-         * encoderRatio = encoderTicksPerRotation/(gearRatio * wheelCircumference);
-         *
-         *
-         *
-         *
-         *
-         * */
+        /* encoderRatio = encoderTicksPerRotation/(gearRatio * wheelCircumference); */
 
 
         DcMotor fl = hardwareMap.dcMotor.get("front_left_motor");
         DcMotor fr = hardwareMap.dcMotor.get("front_right_motor");
         DcMotor bl = hardwareMap.dcMotor.get("back_left_motor");
         DcMotor br = hardwareMap.dcMotor.get("back_right_motor");
-        DcMotor clawMotor = hardwareMap.dcMotor.get("claw_motor");
-        DcMotor handMotor = hardwareMap.dcMotor.get("hand_motor");
+        DcMotor intakeMotor = hardwareMap.dcMotor.get("intake_motor");
+        DcMotor shootMotor = hardwareMap.dcMotor.get("shoot_motor");
+        CRServo intakeServo = hardwareMap.crservo.get("intake_servo");
 
 
         BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters param = new BNO055IMU.Parameters();
-
-
-        clawMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        clawMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -54,18 +41,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         br.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-
-        CRServo handServo = hardwareMap.crservo.get("hand_servo");
-        Servo buildPlateServo = hardwareMap.servo.get("BuildPlate_servo");
-        Servo buildPlateServo2 = hardwareMap.servo.get("Build_Plate_servo");
-        CRServo liftServoR = hardwareMap.crservo.get("right_lift_servo");
-        CRServo liftServoL = hardwareMap.crservo.get("left_lift_servo");
-
-
-        buildPlateServo.setPosition(0.4);
-
-
 
         //Motors
         fl.setDirection(DcMotor.Direction.REVERSE);
@@ -79,7 +54,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
         param.angleUnit = BNO055IMU.AngleUnit.RADIANS;
         param.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         imu.initialize(param);
-        buildPlateServo.setPosition(0.4);
 
 
         waitForStart();
@@ -101,40 +75,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
         while (opModeIsActive()) {
             Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
-
-
-
-            //hand control
-            if (gamepad2.dpad_down) {
-                liftServoR.setPower(-0.3);
-                liftServoL.setPower(0.3);
-                //doorServo.setPosition(0.35);
-            } else if (gamepad2.dpad_up) {
-                liftServoR.setPower(0.3);
-                liftServoL.setPower(-0.3);
-                //doorServo.setPosition(0);
-            } else {
-                liftServoR.setPower(0);
-                liftServoL.setPower(0);
-            }
-
-            if (gamepad2.right_bumper) {
-                handServo.setPower(-0.3);
-                //doorServo.setPosition(0.35);
-            } else if (gamepad2.left_bumper) {
-                handServo.setPower(0.3);
-                //doorServo.setPosition(0);
-            } else {
-                handServo.setPower(0);
-            }
-
-
-            if(gamepad1.a){
-                armSpeed = 10;
-            }else if(gamepad1.b){
-                armSpeed = 40;
-            }
-
+            intakeMotor.setPower(gamepad1.left_bumper);
+            intakeServo.setPower(gamepad1.left_bumper);
+            shootMotor.setPower(gamepad1.right_bumper);
 
             //motor setting for drivetrain
             Vector2d input = new Vector2d(gamepad1.left_stick_y / 2, gamepad1.left_stick_x / 2);
@@ -143,35 +86,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
             fr.setPower(input.x + input.y + rot);
             bl.setPower(input.x + input.y - rot);
             br.setPower(input.x - input.y + rot);
-
-            //motor setting for arm
-            //double armSpeed = intake.move(clawMotor.getCurrentPosition());
-            //clawMotor.setPower(armSpeed);
-            clawMotor.setPower((gamepad2.right_stick_y / armSpeed));
-
-            handMotor.setPower((gamepad2.left_stick_y / 10));
-
-            //toggles Build Plate Grabbers
-            if (gamepad1.x && !BaseGrabberDebounce) {
-                rightArmB = !rightArmB;
-                BaseGrabberDebounce = true;
-
-            } else if (!gamepad1.x) {
-                BaseGrabberDebounce = false;
-            }
-
-            if (rightArmB) {
-                buildPlateServo.setPosition(0.8);
-                buildPlateServo2.setPosition(0.2);
-
-            } else {
-                buildPlateServo.setPosition(0.2);
-                buildPlateServo2.setPosition(0.8);
-            }
-
-
-
-
 
             goRightMotors = (fl.getCurrentPosition() - lastfl + br.getCurrentPosition() - lastbr) / (2 * encoderRatio);
             goLeftMotors =  (fr.getCurrentPosition() - lastfr + bl.getCurrentPosition() - lastbl) / (2 * encoderRatio);
@@ -219,5 +133,4 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
         }
     }
-
 }

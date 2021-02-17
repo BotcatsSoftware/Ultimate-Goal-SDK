@@ -11,6 +11,12 @@ public class BlueAllianceAutoB extends LinearOpMode {
     DcMotor bl = null;
     DcMotor br = null;
     Servo servo = null;
+    double WHEELCIRCUMFERENCE = 301.59;//mm
+    double ENCODERTICKS = 134.4;
+    double GEARRATIO = 1;
+    double TICKSTOMMTRAVELED= (WHEELCIRCUMFERENCE/ENCODERTICKS) * GEARRATIO;
+
+
 
     public void runOpMode() {
         fl = hardwareMap.dcMotor.get("front_left_motor");
@@ -26,22 +32,22 @@ public class BlueAllianceAutoB extends LinearOpMode {
 
         waitForStart();
         //push wobble goal forward
-        driveForwardDistance(0.5, (int) 51.88);
+        driveForwardDistance(0.5, (int) x/TICKSTOMMTRAVELED);
         //push wobble goal into box
-        driveRightDistance(0.5, (int) 18.8);
+        driveRightDistance(0.5, (int) x/TICKSTOMMTRAVELED);
         //drive back to line
-        driveBackDistance(0.5, (int) 3.54);
+        driveBackDistance(0.5, (int) x/TICKSTOMMTRAVELED);
         //drive infront of first target
-        driveRightDistance(0.5, (int) 4.4);
+        driveRightDistance(0.5, (int) x/TICKSTOMMTRAVELED);
         //shoot
         //drive infront of second target
-        driveRightDistance(0.5, (int) 4.4);
+        driveRightDistance(0.5, (int) x/TICKSTOMMTRAVELED);
         //shoot
         //drive infront of third target
-        driveRightDistance(0.5, (int) 4.4);
+        driveRightDistance(0.5, (int) x/TICKSTOMMTRAVELED);
         //shoot
         //park on line
-        driveForwardDistance(0.5, (int) 63.155);
+        driveForwardDistance(0.5, (int) x/TICKSTOMMTRAVELED);
 
 
     }
