@@ -57,8 +57,6 @@ import org.firstinspires.ftc.teamcode.math.Vector2d;
 
 
         waitForStart();
-
-        double armSpeed = 10;
         double currentX = 0;
         double currentY = 0;
         double initialAngle = 0;
