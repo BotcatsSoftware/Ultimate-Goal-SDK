@@ -32,7 +32,8 @@ public class BlueAllianceAutoC extends LinearOpMode {
         //push wobble goal forward
         driveForwardDistance(0.5, (int) (2823/TICKSTOMMTRAVELED));
         //push wobble goal into box
-        driveLeftDistance(0.5, (int) (287/TICKSTOMMTRAVELED));
+        //correct
+        driveLeftDistance(0.5, (int) (289/TICKSTOMMTRAVELED));
         //drive back to line
         driveBackDistance(0.5, (int) (1928/TICKSTOMMTRAVELED));
         //drive infront of first target

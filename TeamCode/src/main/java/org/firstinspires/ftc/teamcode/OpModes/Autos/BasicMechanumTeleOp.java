@@ -73,9 +73,9 @@ import org.firstinspires.ftc.teamcode.math.Vector2d;
         while (opModeIsActive()) {
             Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
-            intakeMotor.setPower(gamepad1.left_bumper);
-            intakeServo.setPower(gamepad1.left_bumper);
-            shootMotor.setPower(gamepad1.right_bumper);
+//            intakeMotor.setPower(gamepad1.left_bumper);
+//            intakeServo.setPower(gamepad1.left_bumper);
+//            shootMotor.setPower(gamepad1.right_bumper);
 
             //motor setting for drivetrain
             Vector2d input = new Vector2d(gamepad1.left_stick_y / 2, gamepad1.left_stick_x / 2);

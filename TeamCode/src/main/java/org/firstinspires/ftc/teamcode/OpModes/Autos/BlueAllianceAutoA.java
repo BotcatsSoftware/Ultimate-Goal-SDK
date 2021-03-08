@@ -30,22 +30,25 @@ public class BlueAllianceAutoA extends LinearOpMode {
 
         waitForStart();
         //push wobble goal forward
-        driveForwardDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        //correct
+        driveForwardDistance(0.5, (int) (1629/TICKSTOMMTRAVELED));
         //push wobble goal into box
-        driveLeftDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        //correct
+        driveLeftDistance(0.5, (int) (289/TICKSTOMMTRAVELED));
         //drive back to line
-        driveBackDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        //correct
+        driveBackDistance(0.5, (int) (25/TICKSTOMMTRAVELED));
         //drive infront of first target
-        driveRightDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        driveRightDistance(0.5, (int) (1270/TICKSTOMMTRAVELED));
         //shoot
         //drive infront of second target
-        driveRightDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        driveRightDistance(0.5, (int) (1574/TICKSTOMMTRAVELED));
         //shoot
         //drive infront of third target
-        driveRightDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        driveRightDistance(0.5, (int) (1765/TICKSTOMMTRAVELED));
         //shoot
         //park on line
-        driveForwardDistance(0.5, (int) (x/TICKSTOMMTRAVELED));
+        driveForwardDistance(0.5, (int) (254/TICKSTOMMTRAVELED));
 
 
     }
