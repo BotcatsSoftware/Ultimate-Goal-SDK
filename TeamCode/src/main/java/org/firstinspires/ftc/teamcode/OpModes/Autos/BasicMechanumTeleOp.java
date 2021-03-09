@@ -12,7 +12,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.math.Vector2d;
 
 
-@TeleOp(name = "Mechanum")public class BasicMechanumTeleOp extends LinearOpMode {
+@TeleOp
+        (name = "Mechanum")public class BasicMechanumTeleOp extends LinearOpMode {
     public void runOpMode() {
         //Variables
         boolean rightArmB = true;

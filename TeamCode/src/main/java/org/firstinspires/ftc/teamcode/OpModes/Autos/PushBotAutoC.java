@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class BlueAllianceAutoA extends LinearOpMode {
+public class PushBotAutoC extends LinearOpMode {
     DcMotor fl = null;
     DcMotor fr = null;
     DcMotor bl = null;
@@ -31,24 +31,13 @@ public class BlueAllianceAutoA extends LinearOpMode {
         waitForStart();
         //push wobble goal forward
         //correct
-        driveForwardDistance(0.5, (int) (1629/TICKSTOMMTRAVELED));
+        driveForwardDistance(0.5, (int) (2820/TICKSTOMMTRAVELED));
         //push wobble goal into box
         //correct
-        driveLeftDistance(0.5, (int) (289/TICKSTOMMTRAVELED));
-        //drive back to line
-        //correct
-        driveBackDistance(0.5, (int) (25/TICKSTOMMTRAVELED));
-        //drive infront of first target
-        driveRightDistance(0.5, (int) (1270/TICKSTOMMTRAVELED));
-        //shoot
-        //drive infront of second target
-        driveRightDistance(0.5, (int) (1574/TICKSTOMMTRAVELED));
-        //shoot
-        //drive infront of third target
-        driveRightDistance(0.5, (int) (1765/TICKSTOMMTRAVELED));
-        //shoot
-        //park on line
-        driveForwardDistance(0.5, (int) (254/TICKSTOMMTRAVELED));
+        driveLeftDistance(0.5, (int) (288.925/TICKSTOMMTRAVELED));
+        //park on the line
+        //this one (below) was made subtracted 9 so it may not be right
+        driveBackDistance(0.5, (int) (2396/TICKSTOMMTRAVELED));
 
 
     }
