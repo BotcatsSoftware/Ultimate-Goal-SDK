@@ -12,12 +12,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.math.Vector2d;
 
 
-@TeleOp
-        (name = "Mechanum")public class BasicMechanumTeleOp extends LinearOpMode {
+@TeleOp(name = "Mechanum")public class BasicMechanumTeleOp extends LinearOpMode {
     public void runOpMode() {
         //Variables
-        boolean rightArmB = true;
-        boolean BaseGrabberDebounce = false;
         double encoderRatio = 952.5/2259;
         /* encoderRatio = encoderTicksPerRotation/(gearRatio * wheelCircumference); */
 
@@ -29,7 +26,6 @@ import org.firstinspires.ftc.teamcode.math.Vector2d;
         DcMotor intakeMotor = hardwareMap.dcMotor.get("intake_motor");
         DcMotor shootMotor = hardwareMap.dcMotor.get("shoot_motor");
         CRServo intakeServo = hardwareMap.crservo.get("intake_servo");
-
 
         BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters param = new BNO055IMU.Parameters();
@@ -74,11 +70,25 @@ import org.firstinspires.ftc.teamcode.math.Vector2d;
         while (opModeIsActive()) {
             Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
-//            intakeMotor.setPower(gamepad1.left_bumper);
-//            intakeServo.setPower(gamepad1.left_bumper);
-//            shootMotor.setPower(gamepad1.right_bumper);
 
-            //motor setting for drivetrain
+            if (gamepad1.left_bumper) {
+                intakeMotor.setPower(1);
+                intakeServo.setPower(1);
+            }
+            else{
+                intakeMotor.setPower(0);
+                intakeServo.setPower(0);
+            }
+
+            if (gamepad1.right_bumper) {
+                shootMotor.setPower(1);
+            }
+            else{
+                shootMotor.setPower(0);
+            }
+
+
+          //motor setting for drivetrain
             Vector2d input = new Vector2d(gamepad1.left_stick_y / 2, gamepad1.left_stick_x / 2);
             double rot = gamepad1.right_trigger - gamepad1.left_trigger;
             fl.setPower(input.x - input.y - rot);

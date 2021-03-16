@@ -33,13 +33,13 @@ public class PushBotAutoC extends LinearOpMode {
         waitForStart();
         //push wobble goal forward
         //correct
-        driveForwardDistance(0.5, (int) (2820/TICKSTOMMTRAVELED));
+        driveForwardDistance(0.5, (int) (2822/TICKSTOMMTRAVELED));
         //push wobble goal into box
         //correct
-        driveLeftDistance(0.5, (int) (288.925/TICKSTOMMTRAVELED));
+        driveLeftDistance(0.5, (int) (289/TICKSTOMMTRAVELED));
         //park on the line
-        //this one (below) was made subtracted 9 so it may not be right
-        driveBackDistance(0.5, (int) (2396/TICKSTOMMTRAVELED));
+        //im not sure if you have to subtract 9 or 18 but if you subtract 9 it would be 927.1
+        driveBackDistance(0.5, (int) (1156/TICKSTOMMTRAVELED));
 
 
     }
