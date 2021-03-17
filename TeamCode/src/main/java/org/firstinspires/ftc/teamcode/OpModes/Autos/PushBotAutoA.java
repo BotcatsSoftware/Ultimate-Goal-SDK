@@ -18,6 +18,7 @@ public class PushBotAutoA extends LinearOpMode {
     double GEARRATIO = 1;
     double TICKSTOMMTRAVELED= (WHEELCIRCUMFERENCE/ENCODERTICKS) * GEARRATIO;
 
+    @Override
     public void runOpMode() {
         fl = hardwareMap.dcMotor.get("front_left_motor");
         fr = hardwareMap.dcMotor.get("front_right_motor");
