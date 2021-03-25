@@ -39,7 +39,6 @@ public class PushBotAutoA extends LinearOpMode {
         //correct
         driveLeftDistance(0.5, (int) (289/TICKSTOMMTRAVELED));
 
-
     }
 
     private void driveForwardDistance(double power, int distance){
@@ -60,8 +59,7 @@ public class PushBotAutoA extends LinearOpMode {
 
         driveForward(power);
 
-        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy()) {
-        }
+
 
         stopDriving();
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -87,10 +85,6 @@ public class PushBotAutoA extends LinearOpMode {
 
         driveBack(power);
 
-        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
-        {
-
-        }
         stopDriving();
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -115,10 +109,7 @@ public class PushBotAutoA extends LinearOpMode {
 
         driveLeft(power);
 
-        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
-        {
 
-        }
         stopDriving();
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -143,10 +134,7 @@ public class PushBotAutoA extends LinearOpMode {
 
         driveRight(power);
 
-        while(fl.isBusy() && fr.isBusy() && bl.isBusy() && br.isBusy())
-        {
 
-        }
         stopDriving();
         fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

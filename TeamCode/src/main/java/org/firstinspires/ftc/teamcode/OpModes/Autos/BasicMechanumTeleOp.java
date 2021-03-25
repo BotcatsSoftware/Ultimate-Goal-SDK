@@ -114,33 +114,6 @@ import org.firstinspires.ftc.teamcode.math.Vector2d;
             lastbr = br.getCurrentPosition();
 
 
-//            DropBoxManager telemetry;
-//            telemetry.addData("frPower: ", fr.getPower());
-//            telemetry.addData("flPower: ", fl.getPower());
-//            telemetry.addData("brPower: ", br.getPower());
-//            telemetry.addData("blPower: ", bl.getPower());
-//            telemetry.addData("frEncoder: ", fr.getCurrentPosition());
-//            telemetry.addData("flEncoder: ", fl.getCurrentPosition());
-//            telemetry.addData("brEncoder: ", br.getCurrentPosition());
-//            telemetry.addData("blEncoder: ", bl.getCurrentPosition());
-//            telemetry.addData("Dx: ", dx);
-//            telemetry.addData("Dy: ", dy);
-//            telemetry.addData("x: ", gamepad1.x);
-//            telemetry.addData("Build Plate Servo", buildPlateServo.getPosition());
-//            telemetry.addData("Build Plate Servo2", buildPlateServo2.getPosition());
-//            telemetry.addData("Right Bumper: ", gamepad1.right_bumper);
-//            telemetry.addData("Left Bumper: ", gamepad1.left_bumper);
-//            telemetry.addData("Hand Power: ", handServo.getPower());
-//            telemetry.addData("Claw Encoder: ", clawMotor.getCurrentPosition());
-//            telemetry.addData("Claw Power", armSpeed);
-//            telemetry.addData("Xpos", currentX);
-//            telemetry.addData("Ypos", currentY);
-//            telemetry.addData("Angle", angle);
-//            //telemetry.addData("Door Location", doorServo.getPosition());
-//
-//            telemetry.update();
-
-
         }
     }
 }
